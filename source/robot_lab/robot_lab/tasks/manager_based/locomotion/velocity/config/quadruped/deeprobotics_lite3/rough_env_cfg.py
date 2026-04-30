@@ -23,6 +23,7 @@ class DeeproboticsLite3RoughEnvCfg(LocomotionVelocityRoughEnvCfg):
         "HR_HipX_joint", "HR_HipY_joint", "HR_Knee_joint",
     ]
     # fmt: on
+    
 
     def __post_init__(self):
         # post init of parent

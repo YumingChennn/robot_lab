@@ -141,27 +141,15 @@ class ObservationsCfg:
             clip=(-100.0, 100.0),
             scale=1.0,
         )
-        # base_ang_vel = ObsTerm(
-        #     func=mdp.base_ang_vel,
-        #     noise=Unoise(n_min=-1.5, n_max=1.5),
-        #     clip=(-100.0, 100.0),
-        #     scale=1.0,
-        # )
         base_ang_vel = ObsTerm(
             func=mdp.base_ang_vel,
-            noise=Unoise(n_min=-0.2, n_max=0.2),
+            noise=Unoise(n_min=-1.5, n_max=1.5),
             clip=(-100.0, 100.0),
             scale=1.0,
         )
-        # projected_gravity = ObsTerm(
-        #     func=mdp.projected_gravity,
-        #     noise=Unoise(n_min=-0.4, n_max=0.4),
-        #     clip=(-100.0, 100.0),
-        #     scale=1.0,
-        # )
         projected_gravity = ObsTerm(
             func=mdp.projected_gravity,
-            noise=Unoise(n_min=-0.05, n_max=0.05),
+            noise=Unoise(n_min=-0.4, n_max=0.4),
             clip=(-100.0, 100.0),
             scale=1.0,
         )
@@ -201,8 +189,8 @@ class ObservationsCfg:
         def __post_init__(self):
             self.enable_corruption = True
             self.concatenate_terms = True
-            # self.history_length = 6
-            # self.flatten_history_dim = True
+            self.history_length = 6
+            self.flatten_history_dim = True
 
     @configclass
     class CriticCfg(ObsGroup):

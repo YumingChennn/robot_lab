@@ -9,8 +9,6 @@
 import math
 from dataclasses import MISSING
 
-import robot_lab.tasks.manager_based.locomotion.velocity.mdp as mdp
-
 import isaaclab.sim as sim_utils
 from isaaclab.assets import ArticulationCfg, AssetBaseCfg
 from isaaclab.envs import ManagerBasedRLEnvCfg
@@ -27,6 +25,8 @@ from isaaclab.terrains import TerrainImporterCfg
 from isaaclab.utils import configclass
 from isaaclab.utils.assets import ISAAC_NUCLEUS_DIR, ISAACLAB_NUCLEUS_DIR
 from isaaclab.utils.noise import AdditiveUniformNoiseCfg as Unoise
+
+import robot_lab.tasks.manager_based.locomotion.velocity.mdp as mdp
 
 ##
 # Pre-defined configs
@@ -141,24 +141,12 @@ class ObservationsCfg:
             clip=(-100.0, 100.0),
             scale=1.0,
         )
-        # base_ang_vel = ObsTerm(
-        #     func=mdp.base_ang_vel,
-        #     noise=Unoise(n_min=-1.5, n_max=1.5),
-        #     clip=(-100.0, 100.0),
-        #     scale=1.0,
-        # )
         base_ang_vel = ObsTerm(
             func=mdp.base_ang_vel,
             noise=Unoise(n_min=-0.2, n_max=0.2),
             clip=(-100.0, 100.0),
             scale=1.0,
         )
-        # projected_gravity = ObsTerm(
-        #     func=mdp.projected_gravity,
-        #     noise=Unoise(n_min=-0.4, n_max=0.4),
-        #     clip=(-100.0, 100.0),
-        #     scale=1.0,
-        # )
         projected_gravity = ObsTerm(
             func=mdp.projected_gravity,
             noise=Unoise(n_min=-0.05, n_max=0.05),
@@ -201,8 +189,6 @@ class ObservationsCfg:
         def __post_init__(self):
             self.enable_corruption = True
             self.concatenate_terms = True
-            # self.history_length = 6
-            # self.flatten_history_dim = True
 
     @configclass
     class CriticCfg(ObsGroup):
@@ -280,8 +266,8 @@ class EventCfg:
             "asset_cfg": SceneEntityCfg("robot", body_names=".*"),
             "static_friction_range": (0.3, 1.0),
             "dynamic_friction_range": (0.3, 0.8),
-            "restitution_range": (0.0, 0.4),
-            "num_buckets": 1024,
+            "restitution_range": (0.0, 0.5),
+            "num_buckets": 64,
         },
     )
 
@@ -353,8 +339,8 @@ class EventCfg:
         mode="reset",
         params={
             "asset_cfg": SceneEntityCfg("robot", joint_names=".*"),
-            "stiffness_distribution_params": (0.85, 1.15),
-            "damping_distribution_params": (0.85, 1.15),
+            "stiffness_distribution_params": (0.5, 2.0),
+            "damping_distribution_params": (0.5, 2.0),
             "operation": "scale",
             "distribution": "uniform",
         },
@@ -467,45 +453,6 @@ class RewardsCfg:
             "command_threshold": 0.1,
         },
     )
-
-    HAA_joint_pos_penalty = RewTerm(
-        func=mdp.joint_pos_penalty,
-        weight=0.0,
-        params={
-            "command_name": "base_velocity",
-            "asset_cfg": SceneEntityCfg("robot", joint_names=".*"),
-            "stand_still_scale": 5.0,
-            "velocity_threshold": 0.5,
-            "command_threshold": 0.1,
-        },
-    )
-
-    HFE_joint_pos_penalty = RewTerm(
-        func=mdp.joint_pos_penalty,
-        weight=0.0,
-        params={
-            "command_name": "base_velocity",
-            "asset_cfg": SceneEntityCfg("robot", joint_names=".*"),
-            "stand_still_scale": 5.0,
-            "velocity_threshold": 0.5,
-            "command_threshold": 0.1,
-        },
-    )
-
-    KFE_joint_pos_penalty = RewTerm(
-        func=mdp.joint_pos_penalty,
-        weight=0.0,
-        params={
-            "command_name": "base_velocity",
-            "asset_cfg": SceneEntityCfg("robot", joint_names=".*"),
-            "stand_still_scale": 5.0,
-            "velocity_threshold": 0.5,
-            "command_threshold": 0.1,
-        },
-    )
-
-
-
 
     wheel_vel_penalty = RewTerm(
         func=mdp.wheel_vel_penalty,

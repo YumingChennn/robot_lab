@@ -15,7 +15,6 @@ from isaaclab.assets.articulation import ArticulationCfg
 # Configuration
 ##
 
-
 UNITREE_A1_CFG = ArticulationCfg(
     spawn=sim_utils.UrdfFileCfg(
         fix_base=False,
