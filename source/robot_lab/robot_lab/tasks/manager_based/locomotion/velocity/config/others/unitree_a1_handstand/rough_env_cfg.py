@@ -4,7 +4,7 @@
 import math
 
 import robot_lab.tasks.manager_based.locomotion.velocity.mdp as mdp
-from robot_lab.tasks.manager_based.locomotion.velocity.velocity_env_cfg import LocomotionVelocityRoughEnvCfg, RewardsCfg
+from source.robot_lab.robot_lab.tasks.manager_based.locomotion.velocity.velocity_env_cfg_r import LocomotionVelocityRoughEnvCfg, RewardsCfg
 
 from isaaclab.managers import RewardTermCfg as RewTerm
 from isaaclab.managers import SceneEntityCfg

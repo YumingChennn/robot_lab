@@ -64,7 +64,28 @@ BIGREDDOG_SIMPLE_ACTUATOR_CFG = DCMotorCfg(
     damping= 0.5,
     friction=0.0,
     )
+# {ISAACLAB_ASSETS_DATA_DIR}/Robots/bigreddog_uie/urdf/bigreddog_uie.urdf
+# /home/csl/yale_ws/robot_lab/source/robot_lab/data/Robots/bigreddog_new/urdf/big_reddog_0201.urdf
+    # init_state=ArticulationCfg.InitialStateCfg(
+    #     pos=(0.0, 0.0, 0.4),
+    #     joint_pos={
+    #         "FR_hip_joint": -0.0,
+    #         "FL_hip_joint": 0.0,
+    #         "RR_hip_joint": -0.0,
+    #         "RL_hip_joint": 0.0,
 
+    #         "FR_thigh_joint": 0.6,
+    #         "FL_thigh_joint": 0.6,
+    #         "RR_thigh_joint": -0.6,
+    #         "RL_thigh_joint": -0.6,
+
+    #         "FR_calf_joint": -1.2,
+    #         "FL_calf_joint": -1.2,
+    #         "RR_calf_joint":  1.2,
+    #         "RL_calf_joint":  1.2,
+    #     },
+    #     joint_vel={".*": 0.0},
+    # ),
 Big_reddog_CFG = ArticulationCfg(
     spawn=sim_utils.UrdfFileCfg(
         fix_base=False,

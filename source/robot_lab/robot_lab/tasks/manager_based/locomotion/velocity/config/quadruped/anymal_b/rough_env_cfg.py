@@ -3,7 +3,7 @@
 #
 # SPDX-License-Identifier: BSD-3-Clause
 
-from robot_lab.tasks.manager_based.locomotion.velocity.velocity_env_cfg import LocomotionVelocityRoughEnvCfg
+from source.robot_lab.robot_lab.tasks.manager_based.locomotion.velocity.velocity_env_cfg_r import LocomotionVelocityRoughEnvCfg
 
 from isaaclab.utils import configclass
 

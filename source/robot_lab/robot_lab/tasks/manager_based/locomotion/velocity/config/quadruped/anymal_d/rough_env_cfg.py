@@ -1,7 +1,7 @@
 # Copyright (c) 2024-2026 Ziqi Fan
 # SPDX-License-Identifier: Apache-2.0
 
-from robot_lab.tasks.manager_based.locomotion.velocity.velocity_env_cfg import LocomotionVelocityRoughEnvCfg
+from source.robot_lab.robot_lab.tasks.manager_based.locomotion.velocity.velocity_env_cfg_r import LocomotionVelocityRoughEnvCfg
 
 from isaaclab.utils import configclass
 

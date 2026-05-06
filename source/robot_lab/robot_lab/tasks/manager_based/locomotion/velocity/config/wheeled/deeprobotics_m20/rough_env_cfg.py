@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 import robot_lab.tasks.manager_based.locomotion.velocity.mdp as mdp
-from robot_lab.tasks.manager_based.locomotion.velocity.velocity_env_cfg import (
+from source.robot_lab.robot_lab.tasks.manager_based.locomotion.velocity.velocity_env_cfg_r import (
     ActionsCfg,
     LocomotionVelocityRoughEnvCfg,
     RewardsCfg,

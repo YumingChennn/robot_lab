@@ -3,7 +3,7 @@
 
 from isaaclab.utils import configclass
 
-from robot_lab.tasks.manager_based.locomotion.velocity.velocity_env_cfg import LocomotionVelocityRoughEnvCfg
+from source.robot_lab.robot_lab.tasks.manager_based.locomotion.velocity.velocity_env_cfg_r import LocomotionVelocityRoughEnvCfg
 
 ##
 # Pre-defined configs
